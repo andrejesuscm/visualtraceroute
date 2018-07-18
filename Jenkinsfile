@@ -34,13 +34,13 @@ timeout(20) { //fail build after 20 min
 			**/
 			parallel (
 				'Electron App' : { //Publishing the artifact
-					publishHTML(target: [
+					/*publishHTML(target: [
 						allowMissing: false,
 						keepAll     : true,
 						reportDir   : 'public',
 						reportFiles : 'index.html',
 						reportName  : 'Electron'
-					])
+					])*/
 				},
 				failFast: true
 			)
