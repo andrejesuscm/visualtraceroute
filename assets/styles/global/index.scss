@@ -1,0 +1,9 @@
+.vtr-draggable-area {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 40px;
+    -webkit-app-region: drag;
+    z-index: 9999;
+}
