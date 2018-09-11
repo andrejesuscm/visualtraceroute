@@ -1,3 +1,6 @@
 .vtr-map {
-    width: 100%; height: calc(100% - 80px);
+    width: 100%; 
+    height: 100%;
+    background-color: map-get($vtr-colors, map-ocean);
+    flex-grow: 1;
 }

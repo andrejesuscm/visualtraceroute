@@ -3,7 +3,7 @@ const {app, BrowserWindow} = require('electron');
 const path = require('path');
 const url = require('url');
 const log = require('electron-log');
-const client = require('electron-connect').client;
+//const client = require('electron-connect').client;
 
 
 function start(){
@@ -32,7 +32,7 @@ function start(){
     });
 
       // Connect to server process
-    client.create(win);
+    //client.create(win);
 }
 
 
