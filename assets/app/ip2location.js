@@ -14,4 +14,6 @@ function getHostData(ip) {
         }
         return result;
     }
+    mainMap.fitBounds(markers.getBounds().pad(0.5)); //zoom to fit all result + padding
+
 }

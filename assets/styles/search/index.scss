@@ -1,0 +1,29 @@
+@import "variables";
+
+.vtr-search-input{
+    width: $vtr-spacing-base * 60; //480px
+    height: $vtr-spacing-base * 4; //32px
+    margin: 0 auto;
+    display: flex;
+
+    &__input {
+        flex-grow: 1;
+        border: none;
+        padding: $vtr-spacing-base; //8px
+        font-size: $vtr-base-font; //16px
+        border-bottom-left-radius: $vtr-base-radius / 2; //2px;
+        border-top-left-radius: $vtr-base-radius / 2; //2px;
+    }
+    
+    &__button {
+        flex-grow: 0;
+        width: $vtr-spacing-base * 8; //64px
+        border: none;
+        background-color: map-get($vtr-colors, peter-river);
+        color: white;
+        font-size: $vtr-base-font; //16px
+        border-bottom-right-radius: $vtr-base-radius / 2; //2px;
+        border-top-right-radius: $vtr-base-radius / 2; //2px;
+    }
+
+}
