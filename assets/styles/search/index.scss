@@ -5,6 +5,8 @@
     height: $vtr-spacing-base * 4; //32px
     margin: 0 auto;
     display: flex;
+    z-index: 2;
+    position: relative;
 
     &__input {
         flex-grow: 1;
@@ -24,6 +26,12 @@
         font-size: $vtr-base-font; //16px
         border-bottom-right-radius: $vtr-base-radius / 2; //2px;
         border-top-right-radius: $vtr-base-radius / 2; //2px;
+        cursor: pointer;
+
+        &:disabled{
+            opacity: .5;
+            cursor: not-allowed;
+        }
     }
 
 }
