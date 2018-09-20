@@ -1,0 +1,10 @@
+.vtr-main-content{
+    width: 100%;
+    height: calc(100% - 80px);
+    display: flex;
+
+    &::after {
+        content: "";
+        display: table;
+    }
+}

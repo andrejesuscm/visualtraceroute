@@ -4,21 +4,24 @@ html, body {
 }
 
 @import "theme/index";
+@import "../../node_modules/notie/dist/notie";
+@import "notie/index";
 
 #{$vtr-scope} {
-	//@import "reset";
+    //@import "reset";
 	@import "fonts/index";
 	//@import "normalize";
 	//@import "typography/index";
     //@import "helpers/index";
     
     @import "../../node_modules/leaflet/dist/leaflet";
-
+    
+    
 	* {
-		box-sizing: border-box;
+        box-sizing: border-box;
 		outline: none;
 	}
-
+    
     min-width: 320px;
     height: 100%;
 	margin: 0;
@@ -28,7 +31,11 @@ html, body {
 	@import "global/index";
 	@import "buttons/index";
     @import "header/index";
+    @import "search/index";
+    @import "main-content/index";
+    @import "leaflet/index";
     @import "map/index";
+    @import "results-panel/index";
     
     @import "test/index";
 }

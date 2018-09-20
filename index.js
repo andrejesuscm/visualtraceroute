@@ -3,13 +3,13 @@ const {app, BrowserWindow} = require('electron');
 const path = require('path');
 const url = require('url');
 const log = require('electron-log');
-const client = require('electron-connect').client;
+//const client = require('electron-connect').client;
 
 
 function start(){
     const windowOpions = {
-        width: 1440,
-        height: 1024,
+        width: 1024,
+        height: 768,
         titleBarStyle: 'hiddenInset'
         //frame: false
     }
@@ -21,7 +21,7 @@ function start(){
         slashes: true
     }));*/
 
-    win.webContents.openDevTools();
+    //win.webContents.openDevTools();
 
     // Emitted when the window is closed.
     win.on('closed', () => {
@@ -32,7 +32,7 @@ function start(){
     });
 
       // Connect to server process
-    client.create(win);
+    //client.create(win);
 }
 
 

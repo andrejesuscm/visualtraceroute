@@ -13,18 +13,30 @@
         <div class="vtr-draggable-area"></div>
 
         <section class="vtr-header">
-            HEADER
+            <div class="vtr-header__loading-bar"></div>
+            <div class="vtr-search-input">
+                <input type="text" id="hostname" class="vtr-search-input__input" placeholder="Give me an host!" value="www.google.com">
+                <button class="vtr-search-input__button">
+                    Trace
+                </button>
+            </div>
         </section>
-        <div id="mainMap" class="vtr-map"></div>
+        <section class=vtr-main-content>
+            <div id="mainMap" class="vtr-map"></div>
+            <div id="vtr-results-panel" class="vtr-results-panel">
+                <img class="vtr-results-panel__search-image" src="assets/images/icons/search.svg">
+                <p>Try an host!</p>
+            </div>
+        </section>
 
 
-        <!-- test -->
+        <!-- test --
         <div class="window">
             <h1 id="hostName"></h1>
             <hr>
             <div id="hostsList"></div>
         </div>
-        <!-- -->
+        !-- -->
     </div>
     <script src="dist/script/app.js"></script>
 </body>

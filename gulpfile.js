@@ -32,6 +32,13 @@ gulp.task('build:js', function (done) {
     done();
 });
 
+gulp.task('copy:img', function (done) {
+    gulp.src('./assets/images/**/*.*')
+        .pipe(gulp.dest('./dist/images'));
+
+    done();
+});
+
 gulp.task('run', function(done){
     //start electron
     gulp.src("./")
@@ -52,5 +59,5 @@ gulp.task('clean:dist', function(){
 });
 
 gulp.task('serve', gulp.series('run', 'watch'));
-gulp.task('build', gulp.series('clean:dist', 'build:css', 'build:js'));
+gulp.task('build', gulp.series('clean:dist', 'build:css', 'build:js', 'copy:img'));
 
