@@ -35,7 +35,8 @@
   "scripts": {
     "start": "electron .",
     "build:start": "gulp build && electron .",
-    "lint:css": "stylelint \"assets/styles/**/*.scss\""
+    "lint:css": "stylelint \"assets/styles/**/*.scss\"",
+    "visualtraceroute": "gulp build && electron ."
   },
   "author": "",
   "license": "ISC"
