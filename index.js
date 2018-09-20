@@ -8,8 +8,8 @@ const log = require('electron-log');
 
 function start(){
     const windowOpions = {
-        width: 1440,
-        height: 1024,
+        width: 1024,
+        height: 768,
         titleBarStyle: 'hiddenInset'
         //frame: false
     }
@@ -21,7 +21,7 @@ function start(){
         slashes: true
     }));*/
 
-    win.webContents.openDevTools();
+    //win.webContents.openDevTools();
 
     // Emitted when the window is closed.
     win.on('closed', () => {
