@@ -1,6 +1,101 @@
+@import "variables";
+
 .vtr-results-panel{
-    width: 250px;
+    width: $vtr-results-panel__width;
     height: 100%;
     background-color: white;
     flex-shrink: 0;
+    padding: 16px;
+    overflow-y: auto;
+    text-align: center;
+    font-weight: 700;
+    
+    &.vtr-is-loading{
+        .vtr-results-panel__loading-text {
+            display: block;
+            font-weight: 700;
+        }
+
+    }
+
+    &__loading-text{
+        display: none;
+        text-align: center;
+    }
+
+    &__list{
+        display: block;
+        list-style: none;
+        width: 100%;
+        height: $vtr-results-panel__width;
+        margin: 0;
+        padding: 0;
+        font-weight: 300;
+        text-align: left;
+
+        > li {
+            display: flex;
+            width: 100%;
+            height: $vtr-results-panel__item-height;
+            background-color: white;
+            border-radius: 2px;
+            box-shadow: 0px 0px 0px 1px map-get($vtr-colors, clouds);
+            margin-bottom: 8px;
+            overflow: hidden;
+        }
+
+        &__hop-number {
+            flex-grow: 0;
+            font-weight: 500;
+            line-height: $vtr-results-panel__item-height - 16px;
+            height: $vtr-results-panel__item-height;
+            width: $vtr-results-panel__item-height;
+            color: white;
+            font-size: 18px;
+            text-align: center;
+            padding: 8px;
+            background-color: map-get($vtr-colors, 'peter-river');
+        }
+        
+        &__hop-info {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+
+            &__host{
+                padding: 8px;
+                padding-bottom: 0px;
+            }
+            
+            &__time{
+                padding: 8px;
+                padding-top: 0px;
+                padding-left: 8px;
+                list-style: none;
+                font-size: 12px;
+                color: map-get($vtr-colors, asbestos);
+
+                li {
+                    display: inline-block;
+                    margin: 0;
+                    padding: 0;
+                }
+            }
+        }
+        
+        &__hop-country-flag {
+            flex-grow: 0;
+            height: $vtr-results-panel__item-height;
+            width: $vtr-results-panel__item-height;
+            background-color: white;
+            background-size: cover;
+            background-position: center;
+        }
+    }
+
+    &__search-image {
+        margin-top: 80px;
+        width: 80px;
+        height: 80px;
+    }
 }

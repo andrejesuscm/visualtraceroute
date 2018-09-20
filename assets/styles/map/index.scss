@@ -3,4 +3,127 @@
     height: 100%;
     background-color: map-get($vtr-colors, map-ocean);
     flex-grow: 1;
+
+    &__marker{
+        display: block;
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        border: solid white 3px;
+        background: map-get($vtr-colors, peter-river);
+        cursor: pointer;
+        animation: pulse .5s infinite;
+    }
+
+    &__marker-cluster{
+        display: block;
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        border: solid white 6px;
+        background: map-get($vtr-colors, peter-river);
+        cursor: pointer;
+        animation: pulse .5s infinite;
+        color: white;
+        font-weight: 700;
+        font-size: 18px;
+        line-height: 36px;
+        text-align: center
+    }
+
+    &__initial-marker{
+        display: block;
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        border: solid white 3px;
+        background: map-get($vtr-colors, peter-river);
+        cursor: pointer;
+        box-shadow: 0 0 0 rgba(map-get($vtr-colors, peter-river), 0.4);
+        animation: pulse .5s infinite;
+    }
+
+    &__popup{
+
+        .leaflet-popup-content{
+            margin: 16px;
+        }
+
+        &__header{
+            display: flex;
+            flex-direction: row;
+            border-bottom: solid map-get($vtr-colors, concrete) 1px;
+
+            &-hop-number{
+                font-weight: bold;
+                font-size: 16px;
+                width: 32px;
+                height: 32px;
+                flex-grow: 0;
+                line-height: 32px;
+                text-align: left;
+            }
+
+            &-hop{
+                flex-grow: 1;
+                font-weight: bold;
+                font-size: 16px;
+                height: 32px;
+                line-height: 32px;
+                padding-right: 16px;
+            }
+
+            &-country-flag{
+                flex-grow: 0;
+                height: 24px;
+                width: 24px;
+                background-size: cover;
+                background-position: center;
+                margin: 4px;
+            }
+        }
+
+        &__hop-times {
+            padding: 8px;
+            padding-top: 0px;
+            padding-left: 0px;
+            margin-top: 8px;
+            list-style: none;
+            font-size: 12px;
+            color: map-get($vtr-colors, asbestos);
+            border-bottom: solid map-get($vtr-colors, concrete) 1px;
+
+
+            li {
+                display: inline-block;
+                margin: 0;
+                padding: 0;
+            }
+        }
+
+        &__host-data {
+            list-style: none;
+            padding: 0;
+            font-size: 16px;
+
+            &-name {
+                font-weight: bold;
+            }
+        }
+    }
 }
+
+@keyframes pulse {
+    0% {
+      -moz-box-shadow: 0 0 0 0 rgba(map-get($vtr-colors, peter-river), 0.4);
+      box-shadow: 0 0 0 0 rgba(map-get($vtr-colors, peter-river), 0.4);
+    }
+    70% {
+        -moz-box-shadow: 0 0 0 20px rgba(map-get($vtr-colors, peter-river), 0);
+        box-shadow: 0 0 0 20px rgba(map-get($vtr-colors, peter-river), 0);
+    }
+    100% {
+        -moz-box-shadow: 0 0 0 0 rgba(map-get($vtr-colors, peter-river), 0);
+        box-shadow: 0 0 0 0 rgba(map-get($vtr-colors, peter-river), 0);
+    }
+  }
