@@ -31,16 +31,16 @@ $ npm run visualtraceroute
 ### Hops List
 ![Hops List](docs/images/results-panel.png)
 
-On the results panel you can se the hops list were you the hop number, host, contry and response times can be seen.
+On the results panel, you can see the hops list were you the hop number, host, country and response times can be seen.
 
 ### Map markers
 ![Map Markers](docs/images/map-markers.png)
 
-You can have a visualy undertand the location of each host. When there is to much markers close together, they will get clustered and a bigger marker will appear with the number os clustered items inside. when clicking in the cluster, the map will zoom in in order to expand them.
+You can have a visually understand the location of each host. When there is too many markers close together, they will get clustered and a bigger marker will appear with the number of clustered items inside. when clicking in the cluster, the map will zoom in in order to expand them.
 
 ![Map Markers Cluster](docs/images/spider.png)
 
-Whenever ther is multiple hops in the same location we will have them also clustered in a bigger maker and when clicked we can visualize them in a spider web like way.
+Whenever there are multiple hops in the same location we will have them also clustered in a bigger maker and when clicked we can visualize them in a spider web way.
 
 ![Map Markers Popups](docs/images/popup.png)
 
