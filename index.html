@@ -15,7 +15,7 @@
         <section class="vtr-header">
             <div class="vtr-header__loading-bar"></div>
             <div class="vtr-search-input">
-                <input type="text" class="vtr-search-input__input" placeholder="Give me an host!">
+                <input type="text" id="hostname" class="vtr-search-input__input" placeholder="Give me an host!" value="www.google.com">
                 <button class="vtr-search-input__button">
                     Trace
                 </button>
@@ -23,7 +23,10 @@
         </section>
         <section class=vtr-main-content>
             <div id="mainMap" class="vtr-map"></div>
-            <div class="vtr-results-panel"></div>
+            <div id="vtr-results-panel" class="vtr-results-panel">
+                <img class="vtr-results-panel__search-image" src="assets/images/icons/search.svg">
+                <p>Try an host!</p>
+            </div>
         </section>
 
 

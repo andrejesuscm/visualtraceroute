@@ -1,9 +1,11 @@
 .vtr-header {
     position: relative;
     background-color: map-get($vtr-colors, midnight-blue);
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.5);
     height: $vtr-spacing-base * 10; //80px
     padding: $vtr-spacing-base * 3; //24px
     width: 100%;
+    z-index: 1000; // get on top off the map layer
 
     &__loading-bar {
         display: none;
