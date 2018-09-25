@@ -1,6 +1,8 @@
-html, body {
-    margin: 0;
-    height: 100%;
+
+html,
+body {
+	height: 100%;
+	margin: 0;
 }
 
 @import "theme/index";
@@ -8,34 +10,26 @@ html, body {
 @import "notie/index";
 
 #{$vtr-scope} {
-    //@import "reset";
 	@import "fonts/index";
-	//@import "normalize";
-	//@import "typography/index";
-    //@import "helpers/index";
-    
-    @import "../../node_modules/leaflet/dist/leaflet";
-    
-    
+	@import "../../node_modules/leaflet/dist/leaflet";
+
 	* {
-        box-sizing: border-box;
+		box-sizing: border-box;
 		outline: none;
 	}
-    
-    min-width: 320px;
-    height: 100%;
+
+	min-width: 320px;
+	height: 100%;
 	margin: 0;
-    padding: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    
+	padding: 0;
+	font-family: Arial, Helvetica, sans-serif;
+
 	@import "global/index";
 	@import "buttons/index";
-    @import "header/index";
-    @import "search/index";
-    @import "main-content/index";
-    @import "leaflet/index";
-    @import "map/index";
-    @import "results-panel/index";
-    
-    @import "test/index";
+	@import "header/index";
+	@import "search/index";
+	@import "main-content/index";
+	@import "leaflet/index";
+	@import "map/index";
+	@import "results-panel/index";
 }
