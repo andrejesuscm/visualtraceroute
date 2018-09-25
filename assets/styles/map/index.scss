@@ -13,6 +13,9 @@
         background: map-get($vtr-colors, peter-river);
         cursor: pointer;
         animation: pulse .5s infinite;
+        color: white;
+        text-align: center;
+        line-height: 18px;
     }
 
     &__marker-cluster{
