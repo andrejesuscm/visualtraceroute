@@ -1,37 +1,34 @@
-@import "variables";
+.vtr-search-input {
+	position: relative;
+	display: flex;
+	width: $vtr-spacing-base * 60; //480px
+	height: $vtr-spacing-base * 4; //32px
+	margin: 0 auto;
+	z-index: 2;
 
-.vtr-search-input{
-    width: $vtr-spacing-base * 60; //480px
-    height: $vtr-spacing-base * 4; //32px
-    margin: 0 auto;
-    display: flex;
-    z-index: 2;
-    position: relative;
+	&__input {
+		flex-grow: 1;
+		padding: $vtr-spacing-base; //8px
+		border: none;
+		border-top-left-radius: $vtr-base-radius / 2; //2px;
+		border-bottom-left-radius: $vtr-base-radius / 2; //2px;
+		font-size: $vtr-base-font; //16px
+	}
 
-    &__input {
-        flex-grow: 1;
-        border: none;
-        padding: $vtr-spacing-base; //8px
-        font-size: $vtr-base-font; //16px
-        border-bottom-left-radius: $vtr-base-radius / 2; //2px;
-        border-top-left-radius: $vtr-base-radius / 2; //2px;
-    }
-    
-    &__button {
-        flex-grow: 0;
-        width: $vtr-spacing-base * 8; //64px
-        border: none;
-        background-color: map-get($vtr-colors, peter-river);
-        color: white;
-        font-size: $vtr-base-font; //16px
-        border-bottom-right-radius: $vtr-base-radius / 2; //2px;
-        border-top-right-radius: $vtr-base-radius / 2; //2px;
-        cursor: pointer;
+	&__button {
+		flex-grow: 0;
+		width: $vtr-spacing-base * 8; //64px
+		border: none;
+		border-top-right-radius: $vtr-base-radius / 2; //2px;
+		border-bottom-right-radius: $vtr-base-radius / 2; //2px;
+		background-color: map-get($vtr-colors, peter-river);
+		color: white;
+		font-size: $vtr-base-font; //16px
+		cursor: pointer;
 
-        &:disabled{
-            opacity: .5;
-            cursor: not-allowed;
-        }
-    }
-
+		&:disabled {
+			cursor: not-allowed;
+			opacity: .5;
+		}
+	}
 }
