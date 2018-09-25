@@ -1,7 +1,14 @@
-var mainMap, markersLayer, markers = [], pathLocation = [];
+var mainMap,
+    markersLayer,
+    markers = [],
+    pathLocation = [];
 
+/**
+ * Create a map instance, add the marker clustering, and open maps layers
+ */
 function initMap(){
-    markersLayer = new MarkerCluster.MarkerClusterGroup({ //create markersLayer cluster
+    //create markersLayer cluster
+    markersLayer = new MarkerCluster.MarkerClusterGroup({ 
         iconCreateFunction: function(cluster) {
             return L.divIcon({
                 html: "<div class='vtr-map__marker-cluster'>"+cluster.getChildCount()+"</div>", //html for the marker cluster icon
@@ -11,33 +18,40 @@ function initMap(){
         },
         spiderfyDistanceMultiplier: 2,
         showCoverageOnHover: false
-    }); 
-    mainMap = L.map('mainMap').setView([39.3599791, -9.3922809], 3);
-    
+    });
+
+    //create openmaps layer
     var openMapsLayer = L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiYW5kcmVqZXN1cyIsImEiOiJjajM0bTVrNHQwMXNyMzJxNmJ4N3Y0eXJsIn0.VhyneGbaY7fCC1xqcJGKDQ', {
         attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
         maxZoom: 18,
         id: 'mapbox.streets',
         accessToken: 'your.mapbox.access.token'
     });
+
+    //create map instance
+    mainMap = L.map('mainMap').setView([39.3599791, -9.3922809], 3);
     
+    //add openmaps layer to map instance
     mainMap.addLayer(openMapsLayer);
 }
 
-
+/**
+ * Marker drawing function. used to add markers to the markers clustering layer
+ * @param hop (String) : hop ip address
+ * @param type (String) : Type of marker (initial | default )
+ */
 function drawMarker(hop, type, hopData) {
     switch(type){
-        case "initial":
-            console.log("draw initial marker: "+hop);
-
-            //get local IP coordinates
+        case "initial": 
+            //get local IP coordinates from IP2Location DB
             var localhostData = getHostData(hop);
-            console.log(localhostData);
 
-            if(markersLayer){ // clear marker cluster if already exist
+            // clear marker cluster if already exist
+            if(markersLayer){
 	            markersLayer.clearLayers();
             }
 
+            //create initial marker element
             var initialMarker = L.divIcon({
                 html: "<div class='vtr-map__initial-marker'></div>",
                 iconSize: [24, 241],
@@ -46,7 +60,6 @@ function drawMarker(hop, type, hopData) {
 
             // create popup contents for initial marker
             var customInitialHostPopup = "<div class='vtr-map__popup__header'>\
-                <div class='vtr-map__popup__header-hop-number'>#0</div>\
                 <div class='vtr-map__popup__header-hop'>"+hop+"</div>\
                 <div class='vtr-map__popup__header-country-flag' style='background-image: url(dist/images/country_flags/64/"+localhostData.country_short+"_64.png)'></div>\
             </div>\
@@ -68,18 +81,24 @@ function drawMarker(hop, type, hopData) {
                 'className' : 'vtr-map__popup'
             }
             
+            // create a marker instance and bind the popup elemtn to it
             var initialMarker = L.marker([localhostData.latitude, localhostData.longitude], {icon: initialMarker}).bindPopup(customInitialHostPopup,customInitialHostOptions);
 
+            //add the initial marker to the markersLayer
             markersLayer.addLayer(initialMarker);
 
+            //add markers layer to the map instance
             mainMap.addLayer(markersLayer);
+
+            //zoom to fit all results + padding
+            mainMap.fitBounds(markersLayer.getBounds().pad(0.5));
 
             //add localhost to results panel
             $("#vtr-results-panel").append(
                 "<ul class='vtr-results-panel__list'>\
                     <li>\
                         <div class='vtr-results-panel__list__hop-number'>\
-                            #0\
+                            <small>Local</small>\
                         </div>\
                         <div class='vtr-results-panel__list__hop-info'>\
                             <div class='vtr-results-panel__list__hop-info__host'>\
@@ -96,25 +115,25 @@ function drawMarker(hop, type, hopData) {
 
             //add point to paths array
             pathLocation.push(new L.LatLng(localhostData.latitude, localhostData.longitude));
-            mainMap.fitBounds(markersLayer.getBounds().pad(0.5)); //zoom to fit all result + padding
-            //getHostData(hop, "coordinates");
-        break;
+            break;
         default:
-            console.log("draw marker");
-            console.log(hop);
-            //get coordinates
+            //get IP coordinates from IP2Location DB
             coordinates = getHostData(hop, "coordinates");
+            
+            //get complete host data from IP2Location DB
             hostData = getHostData(hop);
-            //make icon
+
+            //create marker element
             markers[hop.replace(".", "_")] = L.divIcon({
-                html: "<div class='vtr-map__marker'></div>",
+                html: "<div class='vtr-map__marker'>#"+hopData.key+"</div>",
                 iconSize: [24, 241],
                 iconAnchor: [12, 12]
             });
 
-            var countryFlag = getHostData(hop, "country_short"); // get host data from ip2 location / add marker to map
+            // get host country flag from from ip2 location DB
+            var countryFlag = getHostData(hop, "country_short");
 
-            // create popup contents
+            // create popup element for marker
             var customPopup = "<div class='vtr-map__popup__header'>\
                 <div class='vtr-map__popup__header-hop-number'>#"+hopData.key+"</div>\
                 <div class='vtr-map__popup__header-hop'>"+hop+"</div>\
@@ -139,30 +158,17 @@ function drawMarker(hop, type, hopData) {
                 'className' : 'vtr-map__popup'
             }
     
-
+            // create a marker instance and bind the popup elemtn to it
             markers[hop.replace(".", "_")] = L.marker([coordinates.latitude, coordinates.longitude], {icon: markers[hop.replace(".", "_")]}).bindPopup(customPopup,customOptions);
             
-            //add to layer
+            //add marker to markers layer
             markersLayer.addLayer(markers[hop.replace(".", "_")]);
+            
+            //zoom to fit all results + padding
+            mainMap.fitBounds(markersLayer.getBounds().pad(0.2)); //zoom to fit all result + padding
 
             //add point to paths array
             pathLocation.push(new L.LatLng(coordinates.latitude, coordinates.longitude));
-
-            //fitbounds
-            mainMap.fitBounds(markersLayer.getBounds().pad(0.2)); //zoom to fit all result + padding
     }
-/*
-    var myIcon = L.icon({
-        iconUrl: 'assets/images/marker.png',
-        iconSize: [51, 51],
-        iconAnchor: [25, 0],
-        popupAnchor: [25, -45],
-        shadowUrl: '',
-        shadowSize: [68, 95],
-        shadowAnchor: [22, 94]
-    });
-
-    L.marker([latitude, longitude], {icon: myIcon}).addTo(mainMap);*/
 }
 
-//drawMarker(39.3599791, -9.3922809);
