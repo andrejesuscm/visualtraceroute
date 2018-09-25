@@ -1,40 +1,42 @@
 .vtr-header {
-    position: relative;
-    background-color: map-get($vtr-colors, midnight-blue);
-    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.5);
-    height: $vtr-spacing-base * 10; //80px
-    padding: $vtr-spacing-base * 3; //24px
-    width: 100%;
-    z-index: 1000; // get on top off the map layer
+	position: relative;
+	width: 100%;
+	height: $vtr-spacing-base * 10; //80px
+	padding: $vtr-spacing-base * 3; //24px
+	background-color: map-get($vtr-colors, midnight-blue);
+	box-shadow: 0 0 5px 0 rgba(0, 0, 0, .5);
+	z-index: 1000; // get on top off the map layer
 
-    &__loading-bar {
-        display: none;
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        height: 4px;
-        background-size: 200% 200%;
-        background-image: 
-            repeating-linear-gradient(
-                -45deg, 
-                map-get($vtr-colors, belize-hole), 
-                map-get($vtr-colors, belize-hole) 12px,
-                lighten(map-get($vtr-colors, belize-hole), 40%) 12px,
-                lighten(map-get($vtr-colors, belize-hole), 40%) 24px
-            );
-        animation: loading-bar-animation 10s linear infinite;
-    }
+	&__loading-bar {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		display: none;
+		width: 100%;
+		height: 4px;
+		background-image:
+			repeating-linear-gradient(
+				-45deg,
+				map-get($vtr-colors, belize-hole),
+				map-get($vtr-colors, belize-hole) 12px,
+				lighten(map-get($vtr-colors, belize-hole), 40%) 12px,
+				lighten(map-get($vtr-colors, belize-hole), 40%) 24px
+			);
+		background-size: 200% 200%;
+		animation: loading-bar-animation 10s linear infinite;
+	}
+}
 
-    &.vtr-is-loading{
-        .vtr-header__loading-bar {
-            display: block;
-        }
-    }
+.vtr-is-loading {
+	.vtr-header {
+		&__loading-bar {
+			display: block;
+		}
+	}
 }
 
 @keyframes loading-bar-animation {
-    0% {
-        background-position: 100% 100%;
-    }
+	0% {
+		background-position: 100% 100%;
+	}
 }

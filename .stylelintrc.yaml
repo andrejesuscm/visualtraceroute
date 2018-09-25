@@ -1,5 +1,9 @@
+extends:
+  - stylelint-config-standard
+  - stylelint-config-recommended-scss
 ignoreFiles:
   - node_modules/**/*
+  - packages/**/node_modules/**/*
 plugins:
   - stylelint-scss
   - stylelint-order
